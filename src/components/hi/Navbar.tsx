@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import { ShoppingBag, Heart, Menu, X, LayoutDashboard } from "lucide-react";
+import { ShoppingBag, Heart, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useCart } from "@/contexts/CartContext";
 import { useWishlist } from "@/contexts/WishlistContext";
@@ -50,14 +50,6 @@ const Navbar = () => {
         </nav>
 
         <div className="flex items-center gap-4">
-          <Link
-            to="/admin"
-            className="hidden lg:inline-flex items-center gap-2 px-3 py-1.5 border border-gold/20 hover:border-gold/40 hover:bg-gold/5 transition-colors"
-            title="Admin"
-          >
-            <LayoutDashboard className="w-3.5 h-3.5 text-gold/60" />
-            <span className="text-[10px] uppercase tracking-widest text-gold/60">Admin</span>
-          </Link>
           <Link
             to="/liste-de-souhaits"
             className="relative inline-flex items-center gap-2 px-4 py-2 border border-gold/40 hover:border-gold hover:bg-gold/10 transition-colors group"
