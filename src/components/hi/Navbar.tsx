@@ -25,15 +25,15 @@ const Navbar = () => {
       }`}
     >
       <div className="container flex items-center justify-between h-20">
-        <Link to="/" className="flex items-center gap-3 group">
+        <Link to="/" className="flex items-center gap-4 group">
           <img
             src="/favicon.png"
             alt="Home Idea"
-            className="w-10 h-10 object-contain group-hover:scale-105 transition-transform duration-500"
+            className="w-14 h-14 object-contain group-hover:scale-105 transition-transform duration-500"
           />
           <div className="leading-tight">
-            <div className="font-display text-xl tracking-wide">HOME IDEA</div>
-            <div className="text-[10px] tracking-[0.3em] text-gold/80 uppercase">Design & Execution</div>
+            <div className="font-display text-2xl tracking-wide">HOME IDEA</div>
+            <div className="text-[11px] tracking-[0.3em] text-gold/80 uppercase">Design & Execution</div>
           </div>
         </Link>
 

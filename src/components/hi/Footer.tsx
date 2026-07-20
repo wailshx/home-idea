@@ -8,8 +8,8 @@ const Footer = () => {
       <div className="container py-20 grid gap-12 md:grid-cols-4">
         <div>
           <div className="flex items-center gap-3 mb-4">
-            <img src="/favicon.png" alt="Home Idea" className="w-9 h-9 object-contain" />
-            <div className="font-display text-xl">HOME IDEA</div>
+            <img src="/favicon.png" alt="Home Idea" className="w-12 h-12 object-contain" />
+            <div className="font-display text-2xl">HOME IDEA</div>
           </div>
           <p className="text-sm text-muted-foreground max-w-xs leading-relaxed">
             Mobilier de luxe & aménagement complet. Du premier croquis à l'installation finale.
