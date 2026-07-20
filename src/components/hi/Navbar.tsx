@@ -26,13 +26,14 @@ const Navbar = () => {
     >
       <div className="container flex items-center justify-between h-20">
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="relative w-9 h-9 grid place-items-center">
-            <div className="absolute inset-0 rotate-45 bg-gradient-gold opacity-90 group-hover:rotate-[135deg] transition-transform duration-700" />
-            <span className="relative font-display text-ink text-lg leading-none">H</span>
-          </div>
+          <img
+            src="/favicon.png"
+            alt="Home Idea"
+            className="w-10 h-10 object-contain group-hover:scale-105 transition-transform duration-500"
+          />
           <div className="leading-tight">
-            <div className="font-display text-xl tracking-wide">Home Idea</div>
-            <div className="text-[10px] tracking-[0.3em] text-gold/80 uppercase">Design · Exécution</div>
+            <div className="font-display text-xl tracking-wide">HOME IDEA</div>
+            <div className="text-[10px] tracking-[0.3em] text-gold/80 uppercase">Design & Execution</div>
           </div>
         </Link>
 
