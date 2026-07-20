@@ -24,7 +24,7 @@ const Cart = () => {
             <div className="lg:col-span-2 space-y-4">
               {detailed.map(({ product, quantity }) => (
                 <div key={product.id} className="flex gap-5 p-5 border border-gold/15 bg-card">
-                  <Link to={`/produit/${product.slug}`} className="w-28 h-28 shrink-0 overflow-hidden bg-ink">
+                  <Link to={`/produit/${product.slug}`} className="w-28 h-28 shrink-0 overflow-hidden bg-muted">
                     <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
                   </Link>
                   <div className="flex-1 flex flex-col">

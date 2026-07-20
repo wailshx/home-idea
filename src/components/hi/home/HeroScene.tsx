@@ -9,7 +9,7 @@ function ChairLeg({ position }: { position: [number, number, number] }) {
   const goldMat = useMemo(
     () =>
       new THREE.MeshStandardMaterial({
-        color: new THREE.Color("#c9a84c"),
+        color: new THREE.Color("#B98A4D"),
         metalness: 0.95,
         roughness: 0.15,
       }),
@@ -53,7 +53,7 @@ function LoungeChair() {
   const goldMat = useMemo(
     () =>
       new THREE.MeshStandardMaterial({
-        color: new THREE.Color("#c9a84c"),
+        color: new THREE.Color("#B98A4D"),
         metalness: 0.95,
         roughness: 0.15,
       }),
@@ -184,7 +184,7 @@ function GoldDust() {
       </bufferGeometry>
       <pointsMaterial
         size={0.015}
-        color="#c9a84c"
+        color="#B98A4D"
         transparent
         opacity={0.35}
         sizeAttenuation
@@ -206,7 +206,7 @@ export default function HeroScene() {
       >
         <ambientLight intensity={0.4} />
         <directionalLight position={[5, 8, 5]} intensity={1.4} color="#f5e6c8" />
-        <directionalLight position={[-4, 3, 4]} intensity={0.6} color="#c9a84c" />
+        <directionalLight position={[-4, 3, 4]} intensity={0.6} color="#B98A4D" />
         <pointLight position={[0, 4, 2]} intensity={0.5} color="#e0c973" />
         <spotLight
           position={[0, 6, 3]}
@@ -225,7 +225,7 @@ export default function HeroScene() {
           scale={6}
           blur={2.5}
           far={4}
-          color="#000000"
+          color="#1C1C1C"
         />
 
         <Environment preset="studio" />

@@ -2,59 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Home Idea — Noir & Gold Luxury Design System
+/* Home Idea — Warm Luxury Design System
    All colors in HSL. */
 
 @layer base {
   :root {
-    --background: 0 0% 5%;              /* #0d0d0d */
-    --foreground: 45 30% 92%;
-    --card: 0 0% 8%;
-    --card-foreground: 45 30% 92%;
-    --popover: 0 0% 8%;
-    --popover-foreground: 45 30% 92%;
+    --background: 37 40% 96%;              /* #F8F5F0 */
+    --foreground: 0 0% 11%;                /* #1C1C1C */
+    --card: 0 0% 100%;                     /* #FFFFFF */
+    --card-foreground: 0 0% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 11%;
 
-    --primary: 44 55% 54%;              /* #c9a84c */
-    --primary-foreground: 0 0% 5%;
-    --primary-glow: 44 76% 74%;         /* #f0d78c */
+    --primary: 37 43% 51%;                 /* #B98A4D */
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 37 47% 65%;            /* #D6B37A */
 
-    --secondary: 0 0% 12%;
-    --secondary-foreground: 45 30% 92%;
-    --muted: 0 0% 14%;
-    --muted-foreground: 45 10% 65%;
-    --accent: 44 55% 54%;
-    --accent-foreground: 0 0% 5%;
+    --secondary: 37 27% 88%;               /* #E8E3DA */
+    --secondary-foreground: 0 0% 11%;
+    --muted: 37 20% 93%;
+    --muted-foreground: 0 0% 40%;          /* #676767 */
+    --accent: 37 43% 51%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
-    --border: 44 20% 20%;
-    --input: 0 0% 14%;
-    --ring: 44 55% 54%;
+    --border: 37 27% 88%;                  /* #E8E3DA */
+    --input: 37 20% 93%;
+    --ring: 37 43% 51%;
     --radius: 0.25rem;
 
-    --gold: 44 55% 54%;
-    --gold-soft: 44 76% 74%;
-    --ink: 0 0% 4%;
+    --gold: 37 43% 51%;                    /* #B98A4D */
+    --gold-soft: 37 47% 65%;               /* #D6B37A */
+    --ink: 0 0% 11%;                       /* #1C1C1C */
 
-    --gradient-gold: linear-gradient(135deg, hsl(44 55% 54%), hsl(44 76% 74%));
-    --gradient-hero: radial-gradient(ellipse at top, hsl(44 55% 54% / 0.18), transparent 60%),
-                     linear-gradient(180deg, hsl(0 0% 3%), hsl(0 0% 6%));
-    --shadow-gold: 0 20px 60px -20px hsl(44 55% 54% / 0.45);
-    --shadow-deep: 0 30px 80px -30px hsl(0 0% 0% / 0.8);
+    --success: 100 19% 45%;                /* #6A8A5B */
 
-    --sidebar-background: 0 0% 5%;
-    --sidebar-foreground: 45 30% 92%;
-    --sidebar-primary: 44 55% 54%;
-    --sidebar-primary-foreground: 0 0% 5%;
-    --sidebar-accent: 0 0% 12%;
-    --sidebar-accent-foreground: 45 30% 92%;
-    --sidebar-border: 44 20% 20%;
-    --sidebar-ring: 44 55% 54%;
-  }
+    --gradient-gold: linear-gradient(135deg, hsl(37 43% 51%), hsl(37 47% 65%));
+    --gradient-hero: radial-gradient(ellipse at top, hsl(37 43% 51% / 0.12), transparent 60%),
+                     linear-gradient(180deg, hsl(37 40% 96%), hsl(37 30% 92%));
+    --shadow-gold: 0 20px 60px -20px hsl(37 43% 51% / 0.25);
+    --shadow-deep: 0 30px 80px -30px hsl(0 0% 0% / 0.12);
 
-  .dark {
-    /* same tokens; site is dark-first */
-    --background: 0 0% 5%;
-    --foreground: 45 30% 92%;
+    --sidebar-background: 37 40% 96%;
+    --sidebar-foreground: 0 0% 11%;
+    --sidebar-primary: 37 43% 51%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 37 20% 93%;
+    --sidebar-accent-foreground: 0 0% 11%;
+    --sidebar-border: 37 27% 88%;
+    --sidebar-ring: 37 43% 51%;
   }
 }
 
@@ -66,8 +62,8 @@
     font-family: 'Fira Sans', system-ui, sans-serif;
     font-weight: 300;
     background-image:
-      radial-gradient(1200px 600px at 10% -10%, hsl(44 55% 54% / 0.08), transparent 60%),
-      radial-gradient(900px 500px at 100% 100%, hsl(44 76% 74% / 0.05), transparent 60%);
+      radial-gradient(1200px 600px at 10% -10%, hsl(37 43% 51% / 0.06), transparent 60%),
+      radial-gradient(900px 500px at 100% 100%, hsl(37 47% 65% / 0.04), transparent 60%);
     background-attachment: fixed;
   }
   h1, h2, h3, h4, h5, h6 {
@@ -75,7 +71,7 @@
     font-weight: 400;
     letter-spacing: -0.01em;
   }
-  ::selection { background: hsl(var(--gold) / 0.4); color: hsl(var(--foreground)); }
+  ::selection { background: hsl(var(--gold) / 0.3); color: hsl(var(--foreground)); }
 }
 
 @layer utilities {
@@ -99,12 +95,12 @@
   .grain::before {
     content: "";
     position: absolute; inset: 0;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.79 0 0 0 0 0.66 0 0 0 0 0.3 0 0 0 0.35 0'/></filter><rect width='120' height='120' filter='url(%23n)' opacity='0.35'/></svg>");
-    opacity: 0.12; pointer-events: none; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.72 0 0 0 0 0.54 0 0 0 0 0.3 0 0 0 0.3 0'/></filter><rect width='120' height='120' filter='url(%23n)' opacity='0.3'/></svg>");
+    opacity: 0.08; pointer-events: none; mix-blend-mode: overlay;
   }
 
   .link-gold {
-    @apply relative inline-block text-foreground/80 transition-colors hover:text-gold;
+    @apply relative inline-block text-foreground/70 transition-colors hover:text-gold;
   }
   .link-gold::after {
     content: "";
@@ -143,12 +139,12 @@
   .anim-float { animation: float-slow 8s ease-in-out infinite; }
   .anim-spin-slow { animation: spin-slow 40s linear infinite; }
   .anim-shimmer {
-    background: linear-gradient(110deg, transparent 30%, hsl(var(--gold-soft) / 0.4) 50%, transparent 70%);
+    background: linear-gradient(110deg, transparent 30%, hsl(var(--gold-soft) / 0.3) 50%, transparent 70%);
     background-size: 200% 100%;
     animation: shimmer 3s linear infinite;
   }
   .anim-rise { animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
-  .anim-glow { animation: glow-pulse 4s ease-in-out infinite; filter: drop-shadow(0 0 20px hsl(var(--gold) / 0.3)); }
+  .anim-glow { animation: glow-pulse 4s ease-in-out infinite; filter: drop-shadow(0 0 20px hsl(var(--gold) / 0.2)); }
   .anim-marquee { animation: marquee 40s linear infinite; }
   .anim-tilt-in { animation: tilt-in 1s cubic-bezier(0.22, 1, 0.36, 1) both; }
 

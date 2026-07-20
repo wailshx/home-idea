@@ -4,7 +4,7 @@ import { categories } from "@/lib/products";
 
 const Footer = () => {
   return (
-    <footer className="mt-32 border-t border-gold/15 bg-gradient-to-b from-transparent to-black/60">
+    <footer className="mt-32 border-t border-border bg-gradient-to-b from-transparent to-foreground/5">
       <div className="container py-20 grid gap-12 md:grid-cols-4">
         <div>
           <div className="flex items-center gap-3 mb-4">

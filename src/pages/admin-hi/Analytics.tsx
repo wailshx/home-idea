@@ -21,7 +21,7 @@ const ORDERS_DATA = [
 ];
 
 const PIE_DATA = [
-  { name: "Salon", value: 34, color: "#c9a84c" },
+  { name: "Salon", value: 34, color: "#B98A4D" },
   { name: "Cuisine", value: 12, color: "#f0d78c" },
   { name: "Chambres", value: 22, color: "#8B7355" },
   { name: "Éclairage", value: 28, color: "#5c3d2e" },
@@ -57,15 +57,15 @@ const Analytics = () => (
           <AreaChart data={REVENUE_DATA}>
             <defs>
               <linearGradient id="goldGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#c9a84c" stopOpacity={0.3} />
-                <stop offset="95%" stopColor="#c9a84c" stopOpacity={0} />
+                <stop offset="5%" stopColor="#B98A4D" stopOpacity={0.3} />
+                <stop offset="95%" stopColor="#B98A4D" stopOpacity={0} />
               </linearGradient>
             </defs>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(201,168,76,0.1)" />
             <XAxis dataKey="month" stroke="rgba(201,168,76,0.5)" fontSize={11} />
             <YAxis stroke="rgba(201,168,76,0.5)" fontSize={11} tickFormatter={(v) => `${v / 1000}k`} />
             <Tooltip contentStyle={{ background: "#1a1a1a", border: "1px solid rgba(201,168,76,0.3)", borderRadius: 0, fontSize: 12 }} />
-            <Area type="monotone" dataKey="revenue" stroke="#c9a84c" fill="url(#goldGrad)" strokeWidth={2} />
+            <Area type="monotone" dataKey="revenue" stroke="#B98A4D" fill="url(#goldGrad)" strokeWidth={2} />
           </AreaChart>
         </ResponsiveContainer>
       </div>
@@ -78,7 +78,7 @@ const Analytics = () => (
             <XAxis dataKey="category" stroke="rgba(201,168,76,0.5)" fontSize={11} />
             <YAxis stroke="rgba(201,168,76,0.5)" fontSize={11} />
             <Tooltip contentStyle={{ background: "#1a1a1a", border: "1px solid rgba(201,168,76,0.3)", borderRadius: 0, fontSize: 12 }} />
-            <Bar dataKey="orders" fill="#c9a84c" radius={[2, 2, 0, 0]} />
+            <Bar dataKey="orders" fill="#B98A4D" radius={[2, 2, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
       </div>

@@ -70,7 +70,7 @@ function Room() {
       {/* Gold accent strip */}
       <mesh position={[0, 0.01, -3.95]} rotation={[-Math.PI / 2, 0, 0]}>
         <planeGeometry args={[8, 0.1]} />
-        <meshStandardMaterial color="#c9a84c" metalness={0.8} roughness={0.2} />
+        <meshStandardMaterial color="#B98A4D" metalness={0.8} roughness={0.2} />
       </mesh>
 
       {/* Sofa */}
@@ -92,7 +92,7 @@ function Room() {
             <meshStandardMaterial color="#2a2a2a" roughness={0.5} />
           </RoundedBox>
           <RoundedBox args={[2.5, 1.2, 0.3]} radius={0.05} position={[0, 0.5, -1.35]}>
-            <meshStandardMaterial color="#c9a84c" metalness={0.3} roughness={0.4} />
+            <meshStandardMaterial color="#B98A4D" metalness={0.3} roughness={0.4} />
           </RoundedBox>
         </group>
       )}
@@ -110,10 +110,10 @@ function Room() {
           <mesh>
             <sphereGeometry args={[0.5, 16, 16]} />
             <meshStandardMaterial
-              color="#c9a84c"
+              color="#B98A4D"
               metalness={0.9}
               roughness={0.1}
-              emissive="#c9a84c"
+              emissive="#B98A4D"
               emissiveIntensity={0.3}
             />
           </mesh>
@@ -156,7 +156,7 @@ function GoldParticles() {
           itemSize={3}
         />
       </bufferGeometry>
-      <pointsMaterial size={0.05} color="#c9a84c" transparent opacity={0.6} sizeAttenuation />
+      <pointsMaterial size={0.05} color="#B98A4D" transparent opacity={0.6} sizeAttenuation />
     </points>
   );
 }
