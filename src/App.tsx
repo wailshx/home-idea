@@ -19,6 +19,8 @@ import Contact from "./pages/hi/Contact";
 import About from "./pages/hi/About";
 import Wishlist from "./pages/hi/Wishlist";
 import NotFound from "./pages/NotFound";
+import Configurator from "./pages/hi/Configurator";
+import ConfigPreview from "./pages/hi/ConfigPreview";
 
 import AdminLayout from "./components/admin-hi/AdminLayout";
 import AdminDashboard from "./pages/admin-hi/Dashboard";
@@ -80,6 +82,8 @@ const App = () => (
                   <Route path="/amenagement" element={<Amenagement />} />
                   <Route path="/a-propos" element={<About />} />
                   <Route path="/contact" element={<Contact />} />
+                  <Route path="/configurateur" element={<Configurator />} />
+                  <Route path="/configurateur/apercu" element={<ConfigPreview />} />
                   <Route path="*" element={<NotFound />} />
                 </Route>
               </Routes>

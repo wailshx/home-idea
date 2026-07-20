@@ -45,6 +45,7 @@ const Navbar = () => {
             </NavLink>
           ))}
           <NavLink to="/amenagement" className="link-gold">Aménagement</NavLink>
+          <NavLink to="/configurateur" className="link-gold">Configurateur</NavLink>
           <NavLink to="/contact" className="link-gold">Contact</NavLink>
         </nav>
 
@@ -102,6 +103,7 @@ const Navbar = () => {
               </NavLink>
             ))}
             <NavLink onClick={() => setOpen(false)} to="/amenagement" className="link-gold">Aménagement</NavLink>
+            <NavLink onClick={() => setOpen(false)} to="/configurateur" className="link-gold">Configurateur</NavLink>
             <NavLink onClick={() => setOpen(false)} to="/contact" className="link-gold">Contact</NavLink>
           </nav>
         </div>
