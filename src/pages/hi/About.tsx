@@ -7,7 +7,7 @@ const About = () => (
       <h1 className="font-display text-5xl lg:text-6xl mb-10">Du design à l'exécution</h1>
 
       <div className="aspect-[16/9] overflow-hidden mb-12 gold-border">
-        <img src={img} alt="Studio Home Idea" className="w-full h-full object-cover" />
+        <img src={img} alt="Studio Home Idea" className="w-full h-full object-cover" loading="lazy" />
       </div>
 
       <div className="prose prose-invert max-w-none space-y-6 text-foreground/80 leading-relaxed">

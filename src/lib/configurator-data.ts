@@ -198,6 +198,28 @@ export const ROOM_META: Record<RoomType, Omit<RoomConfig, "selections">> = {
   },
 };
 
+import {
+  ChefHat,
+  Sofa,
+  Bed,
+  Lightbulb,
+  Frame,
+  Layers,
+  Square,
+  Armchair,
+} from "lucide-react";
+
+export const ROOM_ICON_MAP: Record<string, React.FC<{ className?: string }>> = {
+  ChefHat,
+  Sofa,
+  Bed,
+  Lightbulb,
+  Frame,
+  Layers,
+  Square,
+  Armchair,
+};
+
 export const ROOM_TYPES: RoomType[] = [
   "kitchen",
   "living-room",

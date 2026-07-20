@@ -130,6 +130,7 @@ function DataTable<T extends Record<string, unknown>>({
               onClick={() => setPage(Math.max(0, page - 1))}
               disabled={page === 0}
               className="w-8 h-8 grid place-items-center border border-gold/20 text-gold/60 hover:border-gold/50 disabled:opacity-30 disabled:pointer-events-none transition-colors"
+              aria-label="Page précédente"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
@@ -138,6 +139,7 @@ function DataTable<T extends Record<string, unknown>>({
               onClick={() => setPage(Math.min(totalPages - 1, page + 1))}
               disabled={page >= totalPages - 1}
               className="w-8 h-8 grid place-items-center border border-gold/20 text-gold/60 hover:border-gold/50 disabled:opacity-30 disabled:pointer-events-none transition-colors"
+              aria-label="Page suivante"
             >
               <ChevronRight className="w-4 h-4" />
             </button>

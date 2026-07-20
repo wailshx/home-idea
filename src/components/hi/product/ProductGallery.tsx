@@ -74,6 +74,7 @@ const ProductGallery = ({ images, name, isNew }: ProductGalleryProps) => {
                   prev();
                 }}
                 className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 grid place-items-center bg-background/60 backdrop-blur border border-gold/30 text-gold hover:bg-gold/20 transition-colors"
+                aria-label="Image précédente"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
@@ -83,6 +84,7 @@ const ProductGallery = ({ images, name, isNew }: ProductGalleryProps) => {
                   next();
                 }}
                 className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 grid place-items-center bg-background/60 backdrop-blur border border-gold/30 text-gold hover:bg-gold/20 transition-colors"
+                aria-label="Image suivante"
               >
                 <ChevronRight className="w-5 h-5" />
               </button>
@@ -103,6 +105,7 @@ const ProductGallery = ({ images, name, isNew }: ProductGalleryProps) => {
               setFullscreen(true);
             }}
             className="absolute top-4 right-4 w-10 h-10 grid place-items-center bg-background/60 backdrop-blur border border-gold/30 text-gold hover:bg-gold/20 transition-colors"
+            aria-label="Plein écran"
           >
             <Maximize2 className="w-4 h-4" />
           </button>
@@ -137,10 +140,13 @@ const ProductGallery = ({ images, name, isNew }: ProductGalleryProps) => {
         <div
           className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center cursor-pointer"
           onClick={() => setFullscreen(false)}
+          role="dialog"
+          aria-modal="true"
         >
           <button
             onClick={() => setFullscreen(false)}
             className="absolute top-6 right-6 w-12 h-12 grid place-items-center border border-gold/40 text-gold hover:bg-gold/10 transition-colors"
+            aria-label="Fermer"
           >
             ✕
           </button>
@@ -158,6 +164,7 @@ const ProductGallery = ({ images, name, isNew }: ProductGalleryProps) => {
                   prev();
                 }}
                 className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 grid place-items-center border border-gold/40 text-gold hover:bg-gold/10 transition-colors"
+                aria-label="Image précédente"
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
@@ -167,6 +174,7 @@ const ProductGallery = ({ images, name, isNew }: ProductGalleryProps) => {
                   next();
                 }}
                 className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 grid place-items-center border border-gold/40 text-gold hover:bg-gold/10 transition-colors"
+                aria-label="Image suivante"
               >
                 <ChevronRight className="w-6 h-6" />
               </button>

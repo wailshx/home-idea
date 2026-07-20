@@ -43,7 +43,7 @@ const Amenagement = () => {
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <img src={img} alt="Aménagement Home Idea" className="w-full h-full object-cover opacity-40" />
+          <img src={img} alt="Aménagement Home Idea" className="w-full h-full object-cover opacity-40" loading="lazy" />
           <div className="absolute inset-0 bg-gradient-to-b from-ink/50 via-ink/70 to-background" />
         </div>
         <div className="container relative py-24 lg:py-32 grid lg:grid-cols-2 gap-10 items-center">

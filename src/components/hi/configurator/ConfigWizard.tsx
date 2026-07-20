@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useConfigurator } from "@/contexts/ConfiguratorContext";
-import { ROOM_TYPES, ROOM_META } from "@/lib/configurator-data";
+import { ROOM_TYPES, ROOM_META, ROOM_ICON_MAP } from "@/lib/configurator-data";
 import RoomSelector from "./RoomSelector";
 import CostSummary from "./CostSummary";
 import KitchenPanel from "./panels/KitchenPanel";
@@ -16,14 +16,7 @@ import {
   ArrowRight,
   RotateCcw,
   Eye,
-  ChefHat,
-  Sofa,
-  Bed,
-  Lightbulb,
-  Frame,
-  Layers,
   Square,
-  Armchair,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -36,17 +29,6 @@ const PANEL_MAP: Record<string, React.FC> = {
   floor: FloorPanel,
   walls: WallsPanel,
   furniture: FurniturePanel,
-};
-
-const ICON_MAP: Record<string, React.FC<{ className?: string }>> = {
-  ChefHat,
-  Sofa,
-  Bed,
-  Lightbulb,
-  Frame,
-  Layers,
-  Square,
-  Armchair,
 };
 
 const ConfigWizard = () => {
@@ -127,7 +109,7 @@ const ConfigWizard = () => {
               <div className="sticky top-32 space-y-2">
                 {activeRooms.map((type) => {
                   const meta = ROOM_META[type];
-                  const Icon = ICON_MAP[meta.icon] || Square;
+                  const Icon = ROOM_ICON_MAP[meta.icon] || Square;
                   const isActive = activeRoom === type;
                   const isComplete = completedRooms.includes(type);
                   const room = config.rooms[type];

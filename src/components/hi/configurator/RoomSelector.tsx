@@ -1,27 +1,6 @@
-import { ROOM_TYPES, ROOM_META } from "@/lib/configurator-data";
+import { ROOM_TYPES, ROOM_META, ROOM_ICON_MAP } from "@/lib/configurator-data";
 import { useConfigurator } from "@/contexts/ConfiguratorContext";
-import {
-  ChefHat,
-  Sofa,
-  Bed,
-  Lightbulb,
-  Frame,
-  Layers,
-  Square,
-  Armchair,
-  Check,
-} from "lucide-react";
-
-const ICON_MAP: Record<string, React.FC<{ className?: string }>> = {
-  ChefHat,
-  Sofa,
-  Bed,
-  Lightbulb,
-  Frame,
-  Layers,
-  Square,
-  Armchair,
-};
+import { Check } from "lucide-react";
 
 const RoomSelector = () => {
   const { config, toggleActiveRoom, setActive } = useConfigurator();
@@ -45,7 +24,7 @@ const RoomSelector = () => {
         {ROOM_TYPES.map((type) => {
           const meta = ROOM_META[type];
           const isActive = config.activeRooms.includes(type);
-          const Icon = ICON_MAP[meta.icon] || Square;
+          const Icon = ROOM_ICON_MAP[meta.icon] || Square;
           const hasSelections = Object.keys(config.rooms[type].selections).length > 0;
 
           return (

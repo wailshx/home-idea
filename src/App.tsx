@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -9,42 +10,62 @@ import Navbar from "./components/hi/Navbar";
 import Footer from "./components/hi/Footer";
 import { CartProvider } from "./contexts/CartContext";
 import { WishlistProvider } from "./contexts/WishlistContext";
-import Home from "./pages/hi/Home";
-import Catalog from "./pages/hi/Catalog";
-import ProductDetail from "./pages/hi/ProductDetail";
-import Cart from "./pages/hi/Cart";
-import Checkout from "./pages/hi/Checkout";
-import Amenagement from "./pages/hi/Amenagement";
-import Contact from "./pages/hi/Contact";
-import About from "./pages/hi/About";
-import Wishlist from "./pages/hi/Wishlist";
-import NotFound from "./pages/NotFound";
-import Configurator from "./pages/hi/Configurator";
-import ConfigPreview from "./pages/hi/ConfigPreview";
 
-import AdminLayout from "./components/admin-hi/AdminLayout";
-import AdminDashboard from "./pages/admin-hi/Dashboard";
-import AdminProducts from "./pages/admin-hi/Products";
-import AdminOrders from "./pages/admin-hi/Orders";
-import AdminCustomers from "./pages/admin-hi/Customers";
-import AdminProjects from "./pages/admin-hi/Projects";
-import AdminAppointments from "./pages/admin-hi/Appointments";
-import AdminInventory from "./pages/admin-hi/Inventory";
-import AdminAnalytics from "./pages/admin-hi/Analytics";
-import AdminCMS from "./pages/admin-hi/CMS";
-import AdminRoles from "./pages/admin-hi/Roles";
-import AdminPermissions from "./pages/admin-hi/Permissions";
+const Home = lazy(() => import("./pages/hi/Home"));
+const Catalog = lazy(() => import("./pages/hi/Catalog"));
+const ProductDetail = lazy(() => import("./pages/hi/ProductDetail"));
+const Cart = lazy(() => import("./pages/hi/Cart"));
+const Checkout = lazy(() => import("./pages/hi/Checkout"));
+const Amenagement = lazy(() => import("./pages/hi/Amenagement"));
+const Contact = lazy(() => import("./pages/hi/Contact"));
+const About = lazy(() => import("./pages/hi/About"));
+const Wishlist = lazy(() => import("./pages/hi/Wishlist"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const Configurator = lazy(() => import("./pages/hi/Configurator"));
+const ConfigPreview = lazy(() => import("./pages/hi/ConfigPreview"));
+
+const AdminLayout = lazy(() => import("./components/admin-hi/AdminLayout"));
+const AdminDashboard = lazy(() => import("./pages/admin-hi/Dashboard"));
+const AdminProducts = lazy(() => import("./pages/admin-hi/Products"));
+const AdminOrders = lazy(() => import("./pages/admin-hi/Orders"));
+const AdminCustomers = lazy(() => import("./pages/admin-hi/Customers"));
+const AdminProjects = lazy(() => import("./pages/admin-hi/Projects"));
+const AdminAppointments = lazy(() => import("./pages/admin-hi/Appointments"));
+const AdminInventory = lazy(() => import("./pages/admin-hi/Inventory"));
+const AdminAnalytics = lazy(() => import("./pages/admin-hi/Analytics"));
+const AdminCMS = lazy(() => import("./pages/admin-hi/CMS"));
+const AdminRoles = lazy(() => import("./pages/admin-hi/Roles"));
+const AdminPermissions = lazy(() => import("./pages/admin-hi/Permissions"));
 
 const queryClient = new QueryClient();
 
+const PageLoader = () => (
+  <div className="min-h-screen grid place-items-center bg-background">
+    <div className="text-center">
+      <div className="w-10 h-10 border-2 border-gold/30 border-t-gold rounded-full animate-spin mx-auto mb-4" />
+      <p className="text-xs tracking-[0.2em] uppercase text-gold/60">Chargement…</p>
+    </div>
+  </div>
+);
+
+const L = ({ children }: { children: React.ReactNode }) => (
+  <Suspense fallback={<PageLoader />}>{children}</Suspense>
+);
+
 const SiteLayout = () => (
-  <>
-    <Navbar />
-    <main>
-      <Outlet />
-    </main>
-    <Footer />
-  </>
+  <SmoothScroll>
+    <CartProvider>
+      <WishlistProvider>
+        <Navbar />
+        <main>
+          <Suspense fallback={<PageLoader />}>
+            <Outlet />
+          </Suspense>
+        </main>
+        <Footer />
+      </WishlistProvider>
+    </CartProvider>
+  </SmoothScroll>
 );
 
 const App = () => (
@@ -53,43 +74,37 @@ const App = () => (
       <Toaster />
       <Sonner theme="dark" />
       <BrowserRouter>
-        <SmoothScroll>
-          <CartProvider>
-            <WishlistProvider>
-              <ScrollToTop />
-              <Routes>
-                <Route path="/admin/*" element={<AdminLayout />}>
-                  <Route index element={<AdminDashboard />} />
-                  <Route path="produits" element={<AdminProducts />} />
-                  <Route path="commandes" element={<AdminOrders />} />
-                  <Route path="clients" element={<AdminCustomers />} />
-                  <Route path="projets" element={<AdminProjects />} />
-                  <Route path="rendez-vous" element={<AdminAppointments />} />
-                  <Route path="inventaire" element={<AdminInventory />} />
-                  <Route path="analytics" element={<AdminAnalytics />} />
-                  <Route path="cms" element={<AdminCMS />} />
-                  <Route path="roles" element={<AdminRoles />} />
-                  <Route path="permissions" element={<AdminPermissions />} />
-                </Route>
-                <Route element={<SiteLayout />}>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/collection" element={<Catalog />} />
-                  <Route path="/collection/:slug" element={<Catalog />} />
-                  <Route path="/produit/:slug" element={<ProductDetail />} />
-                  <Route path="/liste-de-souhaits" element={<Wishlist />} />
-                  <Route path="/panier" element={<Cart />} />
-                  <Route path="/commande" element={<Checkout />} />
-                  <Route path="/amenagement" element={<Amenagement />} />
-                  <Route path="/a-propos" element={<About />} />
-                  <Route path="/contact" element={<Contact />} />
-                  <Route path="/configurateur" element={<Configurator />} />
-                  <Route path="/configurateur/apercu" element={<ConfigPreview />} />
-                  <Route path="*" element={<NotFound />} />
-                </Route>
-              </Routes>
-            </WishlistProvider>
-          </CartProvider>
-        </SmoothScroll>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/admin/*" element={<L><AdminLayout /></L>}>
+            <Route index element={<L><AdminDashboard /></L>} />
+            <Route path="produits" element={<L><AdminProducts /></L>} />
+            <Route path="commandes" element={<L><AdminOrders /></L>} />
+            <Route path="clients" element={<L><AdminCustomers /></L>} />
+            <Route path="projets" element={<L><AdminProjects /></L>} />
+            <Route path="rendez-vous" element={<L><AdminAppointments /></L>} />
+            <Route path="inventaire" element={<L><AdminInventory /></L>} />
+            <Route path="analytics" element={<L><AdminAnalytics /></L>} />
+            <Route path="cms" element={<L><AdminCMS /></L>} />
+            <Route path="roles" element={<L><AdminRoles /></L>} />
+            <Route path="permissions" element={<L><AdminPermissions /></L>} />
+          </Route>
+          <Route element={<SiteLayout />}>
+            <Route path="/" element={<L><Home /></L>} />
+            <Route path="/collection" element={<L><Catalog /></L>} />
+            <Route path="/collection/:slug" element={<L><Catalog /></L>} />
+            <Route path="/produit/:slug" element={<L><ProductDetail /></L>} />
+            <Route path="/liste-de-souhaits" element={<L><Wishlist /></L>} />
+            <Route path="/panier" element={<L><Cart /></L>} />
+            <Route path="/commande" element={<L><Checkout /></L>} />
+            <Route path="/amenagement" element={<L><Amenagement /></L>} />
+            <Route path="/a-propos" element={<L><About /></L>} />
+            <Route path="/contact" element={<L><Contact /></L>} />
+            <Route path="/configurateur" element={<L><Configurator /></L>} />
+            <Route path="/configurateur/apercu" element={<L><ConfigPreview /></L>} />
+            <Route path="*" element={<L><NotFound /></L>} />
+          </Route>
+        </Routes>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
