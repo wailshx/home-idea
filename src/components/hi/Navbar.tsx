@@ -1,11 +1,13 @@
 import { Link, NavLink } from "react-router-dom";
-import { ShoppingBag, Menu, X } from "lucide-react";
+import { ShoppingBag, Heart, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useCart } from "@/contexts/CartContext";
+import { useWishlist } from "@/contexts/WishlistContext";
 import { categories } from "@/lib/products";
 
 const Navbar = () => {
   const { count } = useCart();
+  const { count: wishlistCount } = useWishlist();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -36,6 +38,7 @@ const Navbar = () => {
 
         <nav className="hidden lg:flex items-center gap-8 text-sm">
           <NavLink to="/" end className="link-gold">Accueil</NavLink>
+          <NavLink to="/collection" className="link-gold">Collection</NavLink>
           {categories.filter((c) => c.slug !== "amenagement").map((c) => (
             <NavLink key={c.slug} to={`/collection/${c.slug}`} className="link-gold">
               {c.name}
@@ -46,6 +49,18 @@ const Navbar = () => {
         </nav>
 
         <div className="flex items-center gap-4">
+          <Link
+            to="/liste-de-souhaits"
+            className="relative inline-flex items-center gap-2 px-4 py-2 border border-gold/40 hover:border-gold hover:bg-gold/10 transition-colors group"
+          >
+            <Heart className="w-4 h-4 text-gold" />
+            <span className="hidden sm:inline text-xs uppercase tracking-widest">Souhaits</span>
+            {wishlistCount > 0 && (
+              <span className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-gradient-gold text-ink text-[10px] font-semibold grid place-items-center">
+                {wishlistCount}
+              </span>
+            )}
+          </Link>
           <Link
             to="/panier"
             className="relative inline-flex items-center gap-2 px-4 py-2 border border-gold/40 hover:border-gold hover:bg-gold/10 transition-colors group"
@@ -72,6 +87,7 @@ const Navbar = () => {
         <div className="lg:hidden border-t border-gold/15 bg-background/95 backdrop-blur-xl">
           <nav className="container py-6 grid gap-4 text-sm">
             <NavLink onClick={() => setOpen(false)} to="/" end className="link-gold">Accueil</NavLink>
+            <NavLink onClick={() => setOpen(false)} to="/collection" className="link-gold">Collection</NavLink>
             {categories.filter((c) => c.slug !== "amenagement").map((c) => (
               <NavLink key={c.slug} onClick={() => setOpen(false)} to={`/collection/${c.slug}`} className="link-gold">
                 {c.name}

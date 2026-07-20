@@ -1,8 +1,18 @@
 import { Link } from "react-router-dom";
 import { Product } from "@/lib/products";
-import { ArrowUpRight } from "lucide-react";
+import { useWishlist } from "@/contexts/WishlistContext";
+import { ArrowUpRight, Heart } from "lucide-react";
 
 const ProductCard = ({ product, index = 0 }: { product: Product; index?: number }) => {
+  const { has, toggle } = useWishlist();
+  const liked = has(product.id);
+
+  const handleWishlist = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    toggle(product.id);
+  };
+
   return (
     <Link
       to={`/produit/${product.slug}`}
@@ -23,7 +33,15 @@ const ProductCard = ({ product, index = 0 }: { product: Product; index?: number 
               Nouveau
             </span>
           )}
-          <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-background/70 backdrop-blur border border-gold/40 grid place-items-center opacity-0 -translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+          <button
+            onClick={handleWishlist}
+            className="absolute top-4 right-4 w-10 h-10 rounded-full bg-background/70 backdrop-blur border border-gold/40 grid place-items-center opacity-0 -translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 hover:bg-gold/20"
+          >
+            <Heart
+              className={`w-4 h-4 transition-colors ${liked ? "fill-gold text-gold" : "text-gold"}`}
+            />
+          </button>
+          <div className="absolute bottom-4 right-4 w-10 h-10 rounded-full bg-background/70 backdrop-blur border border-gold/40 grid place-items-center opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
             <ArrowUpRight className="w-4 h-4 text-gold" />
           </div>
         </div>

@@ -2,7 +2,8 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { getProduct, productsByCategory } from "@/lib/products";
 import { useCart } from "@/contexts/CartContext";
-import { ArrowLeft, Minus, Plus, ShoppingBag, Check, Ruler, Package, ShieldCheck } from "lucide-react";
+import { useWishlist } from "@/contexts/WishlistContext";
+import { ArrowLeft, Minus, Plus, ShoppingBag, Check, Ruler, Package, ShieldCheck, Heart } from "lucide-react";
 import ProductCard from "@/components/hi/ProductCard";
 import { toast } from "sonner";
 
@@ -11,6 +12,7 @@ const ProductDetail = () => {
   const product = slug ? getProduct(slug) : undefined;
   const navigate = useNavigate();
   const { add } = useCart();
+  const { has, toggle } = useWishlist();
   const [qty, setQty] = useState(1);
   const [added, setAdded] = useState(false);
 
@@ -107,15 +109,37 @@ const ProductDetail = () => {
                 >
                   {added ? <><Check className="w-4 h-4" /> Ajouté</> : <><ShoppingBag className="w-4 h-4" /> Ajouter au panier</>}
                 </button>
+                <button
+                  onClick={() => toggle(product.id)}
+                  className={`inline-flex items-center justify-center w-14 h-14 border transition-colors ${
+                    has(product.id)
+                      ? "border-gold bg-gold/15 text-gold"
+                      : "border-gold/40 text-gold/60 hover:border-gold hover:text-gold"
+                  }`}
+                >
+                  <Heart className={`w-5 h-5 ${has(product.id) ? "fill-gold" : ""}`} />
+                </button>
               </div>
             )}
             {product.price === 0 && (
-              <button
-                onClick={handleAdd}
-                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-gold text-ink font-medium tracking-wide"
-              >
-                Demander un devis
-              </button>
+              <div className="flex flex-wrap items-center gap-4 mb-6">
+                <button
+                  onClick={handleAdd}
+                  className="flex-1 inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-gold text-ink font-medium tracking-wide"
+                >
+                  Demander un devis
+                </button>
+                <button
+                  onClick={() => toggle(product.id)}
+                  className={`inline-flex items-center justify-center w-14 h-14 border transition-colors ${
+                    has(product.id)
+                      ? "border-gold bg-gold/15 text-gold"
+                      : "border-gold/40 text-gold/60 hover:border-gold hover:text-gold"
+                  }`}
+                >
+                  <Heart className={`w-5 h-5 ${has(product.id) ? "fill-gold" : ""}`} />
+                </button>
+              </div>
             )}
 
             <div className="mt-10 flex items-center gap-3 text-xs text-muted-foreground">
